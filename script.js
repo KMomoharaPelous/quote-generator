@@ -44,7 +44,6 @@ function newQuote() {
 
 // Get Quotes FROM API
 async function getQuotes() {
-    showLoadingSpinner();
     const apiURL = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
     try {
         const response = await fetch(apiURL);
