@@ -7,20 +7,21 @@ const loader = document.getElementById('loader');
 
 let apiQuotes = [];
 
-function showLoadingSpinner() {
+// Show Loading Spinner
+function loading() {
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
 
 // Hide Loading Spinner
-function hideLoadingSpinner() {
+function complete() {
     quoteContainer.hidden = false;
     loader.hidden = true;
 }
 
 // Show Quote
 function newQuote() {
-    showLoadingSpinner();
+    loading();
     // Pick a random quote from apiQuotes array
     const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
     // Check if Author field is plan and replace it with 'Unknown'
@@ -38,16 +39,15 @@ function newQuote() {
     }
     // Set quote, Hide Loader
     quoteText.textContent = quote.text;
-    hideLoadingSpinner();
+    complete();
 }
 
 // Get Quotes FROM API
 async function getQuotes() {
-    showLoadingSpinner();
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-    const apiUrl = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
+    loading();
+    const apiURL = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
     try {
-        const response = await fetch(proxyUrl + apiUrl);
+        const response = await fetch(apiURL);
         apiQuotes = await response.json();
         newQuote();
     } catch (error) {
