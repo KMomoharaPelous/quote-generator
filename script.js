@@ -8,20 +8,20 @@ const loader = document.getElementById('loader');
 let apiQuotes = [];
 
 // Show Loading Spinner
-function loading() {
+function showLoadingSpinner() {
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
 
 // Hide Loading Spinner
-function complete() {
+function hideLoadingSpinner() {
     quoteContainer.hidden = false;
     loader.hidden = true;
 }
 
 // Show Quote
 function newQuote() {
-    loading();
+    showLoadingSpinner();
     // Pick a random quote from apiQuotes array
     const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
     // Check if Author field is plan and replace it with 'Unknown'
@@ -39,12 +39,12 @@ function newQuote() {
     }
     // Set quote, Hide Loader
     quoteText.textContent = quote.text;
-    complete();
+    hideLoadingSpinner();
 }
 
 // Get Quotes FROM API
 async function getQuotes() {
-    loading();
+    showLoadingSpinner();
     const apiURL = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
     try {
         const response = await fetch(apiURL);
