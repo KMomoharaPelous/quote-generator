@@ -7,13 +7,13 @@ const loader = document.getElementById('loader');
 
 let apiQuotes = [];
 
-// Show Loading
+// Show Loading Spinner
 function loading() {
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
 
-// Hide Loading
+// Hide Loading Spinner
 function complete() {
     quoteContainer.hidden = false;
     loader.hidden = true;
