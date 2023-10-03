@@ -44,9 +44,10 @@ function newQuote() {
 
 // Get Quotes FROM API
 async function getQuotes() {
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     const apiURL = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
     try {
-        const response = await fetch(apiURL);
+        const response = await fetch(proxyUrl + apiURL);
         apiQuotes = await response.json();
         newQuote();
     } catch (error) {
