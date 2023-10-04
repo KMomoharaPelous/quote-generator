@@ -7,6 +7,7 @@ const loader = document.getElementById('loader');
 
 let apiQuotes = [];
 
+// Show Loading Spinner
 function showLoadingSpinner() {
     loader.hidden = false;
     quoteContainer.hidden = true;
@@ -43,15 +44,15 @@ function newQuote() {
 
 // Get Quotes FROM API
 async function getQuotes() {
-    showLoadingSpinner();
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
-    const apiUrl = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
+    const proxyUrl = 'https://warm-shelf-30931-a40f0bbe241d.herokuapp.com/';
+    const apiURL = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
     try {
-        const response = await fetch(proxyUrl + apiUrl);
+        const response = await fetch(proxyUrl + apiURL);
         apiQuotes = await response.json();
         newQuote();
     } catch (error) {
         // Catch Error Here
+        newQuote();
         console.log(error);
     }
 }
